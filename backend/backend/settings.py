@@ -80,7 +80,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'megapay_db',
         'USER': 'api_user',
-        'PASSWORD': "'wstdyufvgbhjipnh8yr7o8pi'",
+        'PASSWORD': "wstdyufvgbhjipnh8yr7o8pi",
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
