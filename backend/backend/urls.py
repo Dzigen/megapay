@@ -1,4 +1,4 @@
-"""rest_api URL Configuration
+"""backend URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
@@ -15,7 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api.views import UserSuggestionsAPIView, LandingAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', LandingAPIView.as_view()),
+    path('suggestions/', UserSuggestionsAPIView.as_view())
 ]
