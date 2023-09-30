@@ -1,0 +1,14 @@
+version: '3'
+services:
+  megapay_db:
+    container_name: megapay_db
+    image: postgres:14.1
+    restart: always
+    ports:
+      - 15432:5432
+    environment:
+      POSTGRES_USER: api_user
+      POSTGRES_PASSWORD: wstdyufvgbhjipnh8yr7o8pi
+    volumes:
+      - ./db_volume/data:/var/lib/postgresql/data
+      - ./db_volume/entrypoint/init.sql:/docker-entrypoint-initdb.d/init.sql
