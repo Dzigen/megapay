@@ -1,0 +1,32 @@
+version: '3.6'
+services:
+  gitlab_web:
+    image: 'gitlab/gitlab-ee:latest'
+    restart: unless-stopped
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        gitlab_rails['gitlab_shell_ssh_port'] = 50022
+    ports:
+      - '8081:80'
+      - '50443:443'
+      - '50022:22'
+    volumes:
+      - ./gl_volume/config:/etc/gitlab
+      - ./gl_volume/logs:/var/log/gitlab
+      - ./gl_volume/data:/var/opt/gitlab
+    networks:
+      - gitlab_net
+
+  gitlab_runner:
+    image: gitlab/gitlab-runner:alpine
+    restart: unless-stopped
+    depends_on:
+      - gitlab_web
+    volumes:
+      - ./gl_volume/gl_runner:/etc/gitlab-runner
+      - ./gl_volume/docker.sock:/var/run/docker.sock
+    networks:
+      - gitlab_net
+
+networks:
+  gitlab_net:
