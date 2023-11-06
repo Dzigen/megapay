@@ -19,7 +19,6 @@ services:
 
   gitlab_runner:
     image: gitlab/gitlab-runner:alpine
-    restart: unless-stopped
     depends_on:
       - gitlab_web
     volumes:
