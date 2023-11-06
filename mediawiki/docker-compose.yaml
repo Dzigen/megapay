@@ -6,6 +6,8 @@ services:
     restart: always
     networks:
       - mw_network
+    depends_on:
+      - database
     ports:
       - 8080:80
     volumes:
